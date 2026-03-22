@@ -32,3 +32,11 @@ exports.login = async (req, res) => {
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   });
 };
+
+exports.getUsers = (req, res) => {
+  db.query('SELECT id, name, email, role, created_at FROM users', (err, results) => {
+    if (err) return res.status(500).json({ message: 'Error fetching users' });
+    res.json(results);
+  });
+};
+

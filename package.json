@@ -1,0 +1,12 @@
+{
+  "name": "eventzen",
+  "scripts": {
+    "auth": "cd auth-service && node index.js",
+    "events": "cd event-service && node index.js",
+    "frontend": "cd frontend && npm start",
+    "dev": "concurrently \"npm run auth\" \"npm run events\" \"cd frontend && npm start\""
+  },
+  "dependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
