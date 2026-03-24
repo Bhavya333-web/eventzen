@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f0ff;
+  color: #333;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#b44fff, #ff6eb4);
+  border-radius: 10px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+input, select, textarea {
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+select option {
+  background: #1a0533 !important;
+  color: white !important;
+}
+
+select {
+  color: white !important;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.3) !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
