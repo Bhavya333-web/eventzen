@@ -3,12 +3,21 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role, adminCode } = req.body;
+  
+  let userRole = 'user';
+  if (role === 'admin') {
+   if (adminCode !== process.env.ADMIN_CODE) {
+      return res.status(403).json({ message: 'Invalid admin code!' });
+    }
+    userRole = 'admin';
+  }
+
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     db.query(
-      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-      [name, email, hashedPassword],
+      'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
+      [name, email, hashedPassword, userRole],
       (err, result) => {
         if (err) return res.status(400).json({ message: 'Email already exists' });
         res.status(201).json({ message: 'User registered successfully' });
@@ -19,6 +28,10 @@ exports.register = async (req, res) => {
   }
 };
 
+
+
+
+  
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {

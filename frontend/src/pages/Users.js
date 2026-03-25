@@ -9,10 +9,18 @@ const Users = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    getUsers()
-      .then(res => { setUsers(res.data); setLoading(false); })
-      .catch(() => setLoading(false));
-  }, []);
+  getUsers()
+    .then(res => { 
+      console.log('Users data:', res.data);
+      setUsers(res.data); 
+      setLoading(false); 
+    })
+    .catch((err) => {
+      console.log('Error:', err);
+      setLoading(false);
+    });
+}, []);
+
 
   const filtered = users.filter(u =>
     u.name.toLowerCase().includes(search.toLowerCase()) ||

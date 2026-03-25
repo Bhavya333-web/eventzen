@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getEvents } from '../services/api';
-import { MdAdd, MdDelete, MdEdit, MdClose, MdSearch, MdPhone, MdEmail, MdStore } from 'react-icons/md';
+import { getEvents, getVendors, createVendor, updateVendor, deleteVendor } from '../services/api';
+import { MdAdd, MdDelete, MdEdit, MdClose, MdSearch, MdPhone, MdEmail } from 'react-icons/md';
 
 const vendorCategories = ['Catering', 'Photography', 'Decoration', 'Music', 'Security', 'Transport', 'Technology', 'Other'];
 
@@ -30,37 +30,47 @@ const Vendors = () => {
   });
 
   useEffect(() => {
-    getEvents().then(res => setEvents(res.data));
-    const saved = localStorage.getItem('eventzen_vendors');
-    if (saved) setVendors(JSON.parse(saved));
-  }, []);
+  getEvents().then(res => setEvents(res.data));
+  fetchVendors();
+}, []);
 
-  const saveVendors = (data) => {
-    setVendors(data);
-    localStorage.setItem('eventzen_vendors', JSON.stringify(data));
-  };
+const fetchVendors = async () => {
+  try {
+    const res = await getVendors();
+    setVendors(res.data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
     if (editingVendor) {
-      saveVendors(vendors.map(v => v.id === editingVendor.id ? { ...form, id: v.id } : v));
+      await updateVendor(editingVendor._id, form);
     } else {
-      saveVendors([...vendors, { ...form, id: Date.now() }]);
+      await createVendor(form);
     }
+    fetchVendors();
     closeModal();
-  };
+  } catch (err) {
+    alert('Error saving vendor!');
+  }
+};
 
-  const handleDelete = (id) => {
-    if (window.confirm('Remove this vendor?')) {
-      saveVendors(vendors.filter(v => v.id !== id));
-    }
-  };
+const handleDelete = async (id) => {
+  if (window.confirm('Remove this vendor?')) {
+    await deleteVendor(id);
+    fetchVendors();
+  }
+};
 
-  const openEdit = (vendor) => {
-    setEditingVendor(vendor);
-    setForm(vendor);
-    setShowModal(true);
-  };
+const openEdit = (vendor) => {
+  setEditingVendor(vendor);
+  setForm(vendor);
+  setShowModal(true);
+};
+   
 
   const closeModal = () => {
     setShowModal(false);
@@ -242,7 +252,7 @@ const Vendors = () => {
                     <MdEdit size={14}/> Edit
                   </motion.button>
                   <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    onClick={() => handleDelete(vendor.id)}
+                 onClick={() => handleDelete(vendor._id)}
                     style={{
                       flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px',
                       background: 'rgba(255,100,100,0.1)', color: '#ff6b6b',

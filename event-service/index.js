@@ -14,7 +14,10 @@ mongoose.connect(process.env.MONGO_URI)
   .catch((err) => console.log('MongoDB connection failed:', err));
 
 const eventRoutes = require('./routes/eventRoutes');
+const vendorRoutes = require('./routes/vendorRoutes');
+
 app.use('/api/events', eventRoutes);
+app.use('/api/vendors', vendorRoutes);
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {

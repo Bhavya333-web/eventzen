@@ -11,17 +11,21 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await loginUser(form);
-      login(res.data.user, res.data.token);
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const res = await loginUser(form);
+    login(res.data.user, res.data.token);
+    if (res.data.user.role === 'admin') {
       navigate('/');
-    } catch (err) {
-      setError('Invalid email or password!');
+    } else {
+      navigate('/user');
     }
-    setLoading(false);
-  };
+  } catch (err) {
+    setError('Invalid email or password!');
+  }
+  setLoading(false);
+};
 
   return (
     <div style={{

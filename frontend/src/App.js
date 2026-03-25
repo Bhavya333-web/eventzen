@@ -8,12 +8,27 @@ import Events from './pages/Events';
 import Attendees from './pages/Attendees';
 import Budget from './pages/Budget';
 import Users from './pages/Users';
-import Layout from './components/Layout';
 import Vendors from './pages/Vendors';
+import Layout from './components/Layout';
+import UserLayout from './components/UserLayout';
+import UserHome from './pages/user/UserHome';
+import MyBookings from './pages/user/MyBookings';
+import UserProfile from './pages/user/UserProfile';
 
-const PrivateRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const token = localStorage.getItem('token');
-  return token ? children : <Navigate to="/login" />;
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  if (!token) return <Navigate to="/login" />;
+  if (user.role !== 'admin') return <Navigate to="/user" />;
+  return children;
+};
+
+const UserRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  if (!token) return <Navigate to="/login" />;
+  if (user.role === 'admin') return <Navigate to="/" />;
+  return children;
 };
 
 function App() {
@@ -23,13 +38,22 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
+
+          {/* Admin Routes */}
+          <Route path="/" element={<AdminRoute><Layout /></AdminRoute>}>
             <Route index element={<Dashboard />} />
             <Route path="events" element={<Events />} />
             <Route path="attendees" element={<Attendees />} />
             <Route path="budget" element={<Budget />} />
-            <Route path="users" element={<Users />} />
             <Route path="vendors" element={<Vendors />} />
+            <Route path="users" element={<Users />} />
+          </Route>
+
+          {/* User Routes */}
+          <Route path="/user" element={<UserRoute><UserLayout /></UserRoute>}>
+            <Route index element={<UserHome />} />
+            <Route path="bookings" element={<MyBookings />} />
+            <Route path="profile" element={<UserProfile />} />
           </Route>
         </Routes>
       </Router>
