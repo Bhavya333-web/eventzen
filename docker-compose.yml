@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: eventzen-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - eventzen-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: eventzen-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: eventzen_auth
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - eventzen-network
+
+  auth-service:
+    build: ./auth-service
+    container_name: eventzen-auth
+    ports:
+      - "5001:5001"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=root1234
+      - DB_NAME=eventzen_auth
+      - JWT_SECRET=eventzen_secret_key
+      - PORT=5001
+    depends_on:
+      - mysql
+    networks:
+      - eventzen-network
+
+  event-service:
+    build: ./event-service
+    container_name: eventzen-events
+    ports:
+      - "5002:5002"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/eventzen_events
+      - PORT=5002
+    depends_on:
+      - mongodb
+    networks:
+      - eventzen-network
+
+  attendee-service:
+    build: ./attendee-service/AttendeeService
+    container_name: eventzen-attendees
+    ports:
+      - "5172:5172"
+    environment:
+      - MongoDBSettings__ConnectionString=mongodb://mongodb:27017
+      - MongoDBSettings__DatabaseName=eventzen_attendees
+      - MongoDBSettings__CollectionName=attendees
+    depends_on:
+      - mongodb
+    networks:
+      - eventzen-network
+
+  budget-service:
+    build: ./budget-service
+    container_name: eventzen-budget
+    ports:
+      - "5003:5003"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/eventzen_budget
+    depends_on:
+      - mongodb
+    networks:
+      - eventzen-network
+
+  frontend:
+    build: ./frontend
+    container_name: eventzen-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - auth-service
+      - event-service
+      - attendee-service
+      - budget-service
+    networks:
+      - eventzen-network
+
+networks:
+  eventzen-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  mysql_data:
