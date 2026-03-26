@@ -99,13 +99,13 @@ const Login = () => {
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: '30px', marginTop: '40px', zIndex: 1 }}>
-          {[
-            { value: '500+', label: 'Events' },
-            { value: '10K+', label: 'Attendees' },
-            { value: '99%', label: 'Satisfaction' },
+         {[
+            { value: 'Seamless', label: 'Planning' },
+            { value: 'Powerful', label: 'Tracking' },
+            { value: 'Effortless', label: 'Management' },
           ].map((stat, i) => (
             <div key={i} style={{ textAlign: 'center' }}>
-              <div style={{ color: '#b44fff', fontSize: '24px', fontWeight: '800' }}>{stat.value}</div>
+              <div style={{ color: '#b44fff', fontSize: '18px', fontWeight: '800' }}>{stat.value}</div>
               <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>{stat.label}</div>
             </div>
           ))}
