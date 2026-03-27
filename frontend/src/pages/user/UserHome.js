@@ -1,6 +1,7 @@
+
+import { getEvents, getAttendeesByEvent, registerAttendee } from '../../services/api';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getEvents, registerAttendee } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import { MdLocationOn, MdCalendarToday, MdPeople, MdSearch } from 'react-icons/md';
 
@@ -26,19 +27,26 @@ const UserHome = () => {
     getEvents().then(res => setEvents(res.data));
   }, []);
 
-  const handleBook = async (event) => {
-    try {
-      await registerAttendee({
-        name: user.name,
-        email: user.email,
-        eventId: event._id
-      });
-      setBookingSuccess(`Successfully booked for ${event.title}!`);
-      setTimeout(() => setBookingSuccess(''), 3000);
-    } catch (err) {
-      alert('Booking failed or already registered!');
+ const handleBook = async (event) => {
+  try {
+    const attendeesRes = await getAttendeesByEvent(event._id);
+    const alreadyRegistered = attendeesRes.data.find(a => a.email === user.email);
+    if (alreadyRegistered) {
+      alert('You are already registered for this event!');
+      return;
     }
-  };
+    await registerAttendee({
+      name: user.name,
+      email: user.email,
+      eventId: event._id,
+      status: 'registered'
+    });
+    setBookingSuccess(`Successfully booked for ${event.title}!`);
+    setTimeout(() => setBookingSuccess(''), 3000);
+  } catch (err) {
+    alert('Booking failed! Please try again.');
+  }
+};
 
   const filtered = events.filter(e => {
     const matchSearch = e.title.toLowerCase().includes(search.toLowerCase()) ||

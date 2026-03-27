@@ -40,6 +40,7 @@ function App() {
           <Route path="/register" element={<Register />} />
 
           {/* Admin Routes */}
+    
           <Route path="/" element={<AdminRoute><Layout /></AdminRoute>}>
             <Route index element={<Dashboard />} />
             <Route path="events" element={<Events />} />
@@ -50,11 +51,14 @@ function App() {
           </Route>
 
           {/* User Routes */}
+          
           <Route path="/user" element={<UserRoute><UserLayout /></UserRoute>}>
             <Route index element={<UserHome />} />
             <Route path="bookings" element={<MyBookings />} />
             <Route path="profile" element={<UserProfile />} />
           </Route>
+          <Route path="*" element={<Navigate to="/login" />} />
+
         </Routes>
       </Router>
     </AuthProvider>

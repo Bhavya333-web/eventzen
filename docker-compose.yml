@@ -10,6 +10,11 @@ services:
       - mongodb_data:/data/db
     networks:
       - eventzen-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   mysql:
     image: mysql:8.0
@@ -23,6 +28,11 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - eventzen-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot1234"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   auth-service:
     build: ./auth-service
@@ -34,10 +44,12 @@ services:
       - DB_USER=root
       - DB_PASSWORD=root1234
       - DB_NAME=eventzen_auth
-      - JWT_SECRET=eventzen_secret_key
+      - JWT_SECRET=eventzen_secret_key_2025
+      - ADMIN_CODE=EVENTZEN@ADMIN2025
       - PORT=5001
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
       - eventzen-network
 
@@ -50,7 +62,8 @@ services:
       - MONGO_URI=mongodb://mongodb:27017/eventzen_events
       - PORT=5002
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     networks:
       - eventzen-network
 
@@ -58,13 +71,14 @@ services:
     build: ./attendee-service/AttendeeService
     container_name: eventzen-attendees
     ports:
-      - "5172:5172"
+      - "5172:8080"
     environment:
       - MongoDBSettings__ConnectionString=mongodb://mongodb:27017
       - MongoDBSettings__DatabaseName=eventzen_attendees
       - MongoDBSettings__CollectionName=attendees
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     networks:
       - eventzen-network
 
@@ -76,7 +90,8 @@ services:
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/eventzen_budget
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     networks:
       - eventzen-network
 
@@ -102,3 +117,6 @@ networks:
 volumes:
   mongodb_data:
   mysql_data:
+
+
+

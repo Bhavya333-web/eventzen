@@ -1,21 +1,19 @@
-const db = require('../config/db');
+const { getDb } = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
   const { name, email, password, role, adminCode } = req.body;
-  
   let userRole = 'user';
   if (role === 'admin') {
-   if (adminCode !== process.env.ADMIN_CODE) {
+    if (adminCode !== process.env.ADMIN_CODE) {
       return res.status(403).json({ message: 'Invalid admin code!' });
     }
     userRole = 'admin';
   }
-
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    db.query(
+    getDb().query(
       'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
       [name, email, hashedPassword, userRole],
       (err, result) => {
@@ -28,28 +26,27 @@ exports.register = async (req, res) => {
   }
 };
 
-
-
-
-  
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+  getDb().query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
     if (err || results.length === 0)
       return res.status(400).json({ message: 'User not found' });
     const user = results[0];
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({ message: 'Wrong password' });
-    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: '1d' }
+    );
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   });
 };
 
 exports.getUsers = (req, res) => {
-  db.query('SELECT id, name, email, role, created_at FROM users', (err, results) => {
+  getDb().query('SELECT id, name, email, role, created_at FROM users', (err, results) => {
     if (err) return res.status(500).json({ message: 'Error fetching users' });
     res.json(results);
   });
 };
-

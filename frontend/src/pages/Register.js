@@ -11,6 +11,21 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    // Password validation
+    if (form.password.length < 6) {
+      setError('Password must be at least 6 characters!');
+      setLoading(false);
+      return;
+    }
+    if (!/\d/.test(form.password)) {
+      setError('Password must contain at least 1 number!');
+      setLoading(false);
+      return;
+    }
+
+
     setLoading(true);
     try {
       await registerUser(form);
@@ -32,12 +47,12 @@ const Register = () => {
         justifyContent: 'center', alignItems: 'center',
         padding: '60px', position: 'relative', overflow: 'hidden'
       }}>
-        <div style={{ position: 'absolute', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(180,79,255,0.15)', top: '-100px', right: '-100px' }}/>
-        <div style={{ position: 'absolute', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(255,110,180,0.1)', bottom: '-50px', left: '-50px' }}/>
+        <div style={{ position: 'absolute', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(180,79,255,0.15)', top: '-100px', right: '-100px' }} />
+        <div style={{ position: 'absolute', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(255,110,180,0.1)', bottom: '-50px', left: '-50px' }} />
 
         <div style={{ zIndex: 1, width: '100%', maxWidth: '400px' }}>
           <h2 style={{ color: 'white', fontSize: '32px', fontWeight: '800', marginBottom: '10px', lineHeight: 1.3 }}>
-            Start Managing<br/>
+            Start Managing<br />
             <span style={{ background: 'linear-gradient(135deg, #b44fff, #ff6eb4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Your Events Today
             </span>
@@ -133,6 +148,16 @@ const Register = () => {
                   borderRadius: '12px', color: 'white', fontSize: '14px',
                 }}
               />
+
+              {field.key === 'password' && (
+                <p style={{
+                  color: 'rgba(255,255,255,0.3)',
+                  fontSize: '11px',
+                  marginTop: '5px'
+                }}>
+                  Min 6 characters with at least 1 number
+                </p>
+              )}
             </div>
           ))}
 
