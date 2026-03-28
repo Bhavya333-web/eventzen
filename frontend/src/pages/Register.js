@@ -186,7 +186,8 @@ const Register = () => {
                 🔐 Admin Secret Code
               </label>
               <input
-                type="password" required
+                type="text"
+                required
                 value={form.adminCode}
                 onChange={(e) => setForm({ ...form, adminCode: e.target.value })}
                 placeholder="Enter admin secret code"
