@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Frontend – EventZen
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> **React.js Application** | Role-Based Admin & Customer Portal
 
-## Available Scripts
+## Overview
+The EventZen frontend is a modern **React.js** single-page application providing two distinct portals:
+- **Admin Portal** — Full event management dashboard
+- **Customer Portal** — Event browsing and booking
 
-In the project directory, you can run:
+## Tech Stack
+- **Framework:** React.js 18
+- **Animations:** Framer Motion
+- **Charts:** Recharts
+- **Icons:** React Icons (Material Design)
+- **HTTP Client:** Axios
+- **Routing:** React Router DOM v6
+- **State Management:** React Context API
+- **Port:** 3000
 
-### `npm start`
+## Folder Structure
+```
+frontend/src/
+├── components/
+│   ├── Layout.js         # Admin sidebar layout
+│   └── UserLayout.js     # Customer portal navbar layout
+├── context/
+│   └── AuthContext.js    # Global auth state (JWT, user, login/logout)
+├── pages/
+│   ├── Login.js          # Login page
+│   ├── Register.js       # Registration with role selection
+│   ├── Dashboard.js      # Admin dashboard with charts
+│   ├── Events.js         # Event CRUD management
+│   ├── Attendees.js      # Attendee management
+│   ├── Budget.js         # Budget tracking
+│   ├── Vendors.js        # Vendor management
+│   ├── Users.js          # User management
+│   └── user/
+│       ├── UserHome.js       # Customer event browsing
+│       ├── MyBookings.js     # Customer booking history
+│       └── UserProfile.js    # Customer profile page
+├── services/
+│   └── api.js            # Centralized API service layer
+├── App.js                # Routes + protected route guards
+└── index.css             # Global styles
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pages & Routes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Admin Portal
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/login` | Login.js | Login page |
+| `/register` | Register.js | Create account |
+| `/` | Dashboard.js | Stats & charts |
+| `/events` | Events.js | Event management |
+| `/attendees` | Attendees.js | Attendee management |
+| `/budget` | Budget.js | Budget tracker |
+| `/vendors` | Vendors.js | Vendor management |
+| `/users` | Users.js | User management |
 
-### `npm test`
+### Customer Portal
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/user` | UserHome.js | Browse events |
+| `/user/bookings` | MyBookings.js | My bookings |
+| `/user/profile` | UserProfile.js | Profile page |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Run Locally
+```bash
+npm install
+npm start
+```
