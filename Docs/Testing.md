@@ -15,24 +15,6 @@ EventZen was tested using:
 
 ## 📮 Postman API Testing
 
-### How to Test in Postman
-
-**Step 1: Get JWT Token first**
-- Open Postman
-- Create new request: `POST http://localhost:5001/api/auth/login`
-- Body → raw → JSON:
-```json
-{
-  "email": "admin@eventzen.com",
-  "password": "Admin@123"
-}
-```
-- Copy the `token` from response
-
-**Step 2: Use token for protected routes**
-- In any protected request → Headers tab
-- Add: `Authorization` = `Bearer <paste_token_here>`
-
 ---
 
 ### Test Case 1: User Registration
@@ -56,7 +38,7 @@ Body: {
 | Wrong admin code | 403 "Invalid admin code!" | ✅ Pass |
 | Missing fields | 400 Error | ✅ Pass |
 
-**Screenshot location:** Take screenshot of Postman with request + 201 response
+![Screenshot](images/User Registration.png)
 
 ---
 
