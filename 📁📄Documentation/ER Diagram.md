@@ -14,7 +14,7 @@ EventZen uses a **polyglot persistence** strategy:
 
 ### 📄 ER Diagram
 <p align="center">
-  <img src="images/ER_Diagram.png" width="900">
+  <img src="images/ER_Diagram.png" width="1000">
 </p>
 
 
