@@ -23,7 +23,7 @@ EventZen was tested using:
 ```
 POST http://localhost:5001/api/auth/register
 Body: {
-  "name": "Test Admin",
+  "name": "Bhavya Mittal",
   "email": "admin@test.com",
   "password": "Admin123",
   "role": "admin",
@@ -60,8 +60,10 @@ Body: {
 | Valid credentials | 200 + JWT token | ✅ Pass |
 | Wrong password | 400 "Wrong password" | ✅ Pass |
 | Non-existent email | 400 "User not found" | ✅ Pass |
+<p align="center">
+  <img src="images/Login.png" width="600">
+</p>
 
-**Screenshot location:** Take screenshot showing JWT token in response body
 
 ---
 
@@ -78,6 +80,11 @@ Headers: Authorization: Bearer <token>
 | With valid JWT | 200 + user array | ✅ Pass |
 | Without JWT | 401 "No token provided" | ✅ Pass |
 | Expired/invalid JWT | 401 "Invalid token" | ✅ Pass |
+
+<p align="center">
+  <img src="images/Users.png" width="600">
+</p>
+
 
 ---
 
@@ -102,6 +109,11 @@ Body: {
 | Valid event data | 201 Created with _id | ✅ Pass |
 | Missing required field | 500 Error | ✅ Pass |
 
+<p align="center">
+  <img src="images/Create_events.png" width="600">
+</p>
+
+
 ---
 
 ### Test Case 5: Get All Events
@@ -115,6 +127,11 @@ GET http://localhost:5002/api/events
 |------|----------|--------|
 | Events exist | 200 + array of events | ✅ Pass |
 | Empty database | 200 + empty array [] | ✅ Pass |
+
+<p align="center">
+  <img src="images/Events.png" width="600">
+</p>
+
 
 ---
 
@@ -133,6 +150,11 @@ Body: {
 |------|----------|--------|
 | Valid update | 200 + updated event | ✅ Pass |
 | Invalid ID format | 500 Error | ✅ Pass |
+
+<p align="center">
+  <img src="images/Update_Event.png" width="600">
+</p>
+
 
 ---
 
@@ -153,17 +175,26 @@ Body: {
 | Valid registration | 200 + attendee object | ✅ Pass |
 | Missing eventId | 400 Error | ✅ Pass |
 
+<p align="center">
+  <img src="images/Register_Attendee.png" width="600">
+</p>
+
+
 ---
 
-### Test Case 8: Create Budget
+### Test Case 8: Create Vendor
 
 **Request:**
 ```
-POST http://localhost:5003/api/budget
+POST http://localhost:5002/api/vendors
 Body: {
-  "eventId": "<event_id>",
-  "totalBudget": 50000,
-  "expenses": []
+  "name": "Tasty Caterers",
+  "category": "Catering",
+  "phone": "9876543210",
+  "email": "caterers@gmail.com",
+  "price": 25000,
+  "status": "active",
+  "notes": "Best catering in Mumbai"
 }
 ```
 
@@ -171,24 +202,28 @@ Body: {
 |------|----------|--------|
 | Valid budget | 200 + budget object | ✅ Pass |
 
+<p align="center">
+  <img src="images/Create_Vendors.png" width="600">
+</p>
+
 ---
 
-### Test Case 9: Add Expense
+### Test Case 9: Get All Vendors
 
 **Request:**
 ```
-POST http://localhost:5003/api/budget/<event_id>/expense
-Body: {
-  "name": "Venue Booking",
-  "amount": 15000,
-  "category": "venue"
-}
+GET http://localhost:5002/api/vendorse
+
 ```
 
 | Test | Expected | Result |
 |------|----------|--------|
 | Valid expense | 200 + updated budget | ✅ Pass |
 | Non-existent event | 500 Error | ✅ Pass |
+
+p align="center">
+  <img src="images/All_Vendors.png" width="600">
+</p>
 
 ---
 
@@ -234,17 +269,6 @@ Body: {
 
 ---
 
-## 📸 Screenshots to Take for Submission
-
-### Postman Screenshots (take these while app is running):
-1. `POST /api/auth/register` → 201 response
-2. `POST /api/auth/login` → 200 response with token
-3. `GET /api/auth/users` → 200 with user list
-4. `POST /api/events` → 201 with event object
-5. `GET /api/events` → 200 with events array
-6. `POST /api/attendee` → 200 with attendee object
-7. `POST /api/budget` → 200 with budget object
-8. `POST /api/budget/{id}/expense` → 200 updated budget
 
 ### App UI Screenshots (take these from browser):
 1. Login page
