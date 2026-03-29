@@ -227,6 +227,29 @@ GET http://localhost:5002/api/vendorse
 
 ---
 
+### Test Case 10: Create Budget
+
+**Request:**
+
+```
+POST http://localhost:5003/api/budget
+
+Body: {
+  "eventId": "paste_event_id_here",
+  "totalBudget": 50000,
+  "expenses": []
+}
+```
+
+<p align="center">
+  <img src="images/Create_Budget.png" width="600">
+</p>
+
+
+```
+
+
+
 ## 🖥️ Frontend UI Testing
 
 ### Registration Validation Tests
