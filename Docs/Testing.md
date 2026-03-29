@@ -221,7 +221,7 @@ GET http://localhost:5002/api/vendorse
 | Valid expense | 200 + updated budget | ✅ Pass |
 | Non-existent event | 500 Error | ✅ Pass |
 
-p align="center">
+<p align="center">
   <img src="images/All_Vendors.png" width="600">
 </p>
 
