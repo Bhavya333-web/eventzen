@@ -29,12 +29,12 @@ EventZen is a **full-stack event management platform** with role-based access co
 
 ### Login Page
 <p align="center">
-  <img src="images/LoginPage.png" width="660">
+  <img src="images/LoginPage.png" width="760">
 </p>
 
 ### Register Page
 <p align="center">
-  <img src="images/Register.png" width="660">
+  <img src="images/Register.png" width="760">
 </p>
 
 ---
