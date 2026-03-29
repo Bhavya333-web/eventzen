@@ -50,6 +50,37 @@
       at /               at /user
 ```
 
+## 🔄 Complete Flow Diagram
+
+```
+                    ┌─────────────────┐
+                    │  Open App       │
+                    │ localhost:3000  │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │   /login page   │
+                    └────────┬────────┘
+                    ┌────────┴────────┐
+                    │                 │
+             ┌──────▼──────┐   ┌──────▼──────┐
+             │ Admin Login │   │  User Login │
+             └──────┬──────┘   └──────┬──────┘
+                    │                 │
+             ┌──────▼──────┐   ┌──────▼──────┐
+             │  Dashboard  │   │ Customer    │
+             │     /       │   │ Portal /user│
+             └──────┬──────┘   └──────┬──────┘
+                    │                 │
+        ┌───────────┼───────┐    ┌────┼────┐
+        │           │       │    │    │    │
+        ▼           ▼       ▼    ▼    ▼    ▼
+    /events  /attendees  /budget /user /user/bookings
+    /vendors    /users           /user/profile
+```
+
+---
+
 ---
 
 ## 👑 Admin User Flow
@@ -252,37 +283,8 @@ Each event card shows:
        └── User ID
 ```
 
----
 
-## 🔄 Complete Flow Diagram
 
-```
-                    ┌─────────────────┐
-                    │  Open App       │
-                    │ localhost:3000  │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   /login page   │
-                    └────────┬────────┘
-                    ┌────────┴────────┐
-                    │                 │
-             ┌──────▼──────┐   ┌──────▼──────┐
-             │ Admin Login │   │  User Login │
-             └──────┬──────┘   └──────┬──────┘
-                    │                 │
-             ┌──────▼──────┐   ┌──────▼──────┐
-             │  Dashboard  │   │ Customer    │
-             │     /       │   │ Portal /user│
-             └──────┬──────┘   └──────┬──────┘
-                    │                 │
-        ┌───────────┼───────┐    ┌────┼────┐
-        │           │       │    │    │    │
-        ▼           ▼       ▼    ▼    ▼    ▼
-    /events  /attendees  /budget /user /user/bookings
-    /vendors    /users           /user/profile
-```
 
----
 
 *EventZen User Flow | Bhavya Mittal | Deloitte Training 2025-26*
