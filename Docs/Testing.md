@@ -270,39 +270,18 @@ GET http://localhost:5002/api/vendorse
 ---
 
 
-### App UI Screenshots (take these from browser):
-1. Login page
-2. Register page with Admin role selected
-3. Admin Dashboard
-4. Events page with event cards
-5. Create Event modal
-6. Attendees page
-7. Budget page with progress bar
-8. Vendors page
-9. Users page
-10. Customer Portal home
-11. My Bookings page
-12. Docker Desktop or `docker ps` terminal output
-
----
-
 ## 🐳 Docker Verification
 
-Run this command and screenshot the output:
 ```bash
 docker ps
 ```
 
-Expected output shows 7 containers:
+Output shows 7 containers:
 ```
-CONTAINER ID   IMAGE                   STATUS   PORTS
-...            eventzen-frontend       Up       0.0.0.0:3000->3000/tcp
-...            eventzen-auth           Up       0.0.0.0:5001->5001/tcp
-...            eventzen-events         Up       0.0.0.0:5002->5002/tcp
-...            eventzen-attendees      Up       0.0.0.0:5172->5172/tcp
-...            eventzen-budget         Up       0.0.0.0:5003->5003/tcp
-...            mysql:8.0               Up       0.0.0.0:3307->3306/tcp
-...            mongo:6.0               Up       0.0.0.0:27017->27017/tcp
+<p align="center">
+  <img src="images/DockerPs.png" width="600">
+</p>
+
 ```
 
 ---
