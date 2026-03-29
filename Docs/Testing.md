@@ -279,7 +279,7 @@ docker ps
 Output shows 7 containers:
 
 <p align="center">
-  <img src="images/DockerPs.png" width="600">
+  <img src="images/DockerPs.png" width="600" Height = "500">
 </p>
 
 ```
