@@ -38,6 +38,9 @@ Body: {
 | Wrong admin code | 403 "Invalid admin code!" | ✅ Pass |
 | Missing fields | 400 Error | ✅ Pass |
 
+<p align="center">
+  <img src="images/imgX.png" width="400">
+</p>
 ![Screenshot](images/User_Registration.png)
 
 ---
