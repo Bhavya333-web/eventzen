@@ -41,7 +41,6 @@ Body: {
 <p align="center">
   <img src="images/User_Registration.png" width="400">
 </p>
-![Screenshot](images/User_Registration.png)
 
 ---
 
