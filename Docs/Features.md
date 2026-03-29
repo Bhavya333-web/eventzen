@@ -27,12 +27,12 @@ EventZen is a **full-stack event management platform** with role-based access co
 ### Tech Used
 - Node.js, Express.js, MySQL, JWT, Bcrypt
 
-### Login Page
+### 🔐 Login Page
 <p align="center">
   <img src="images/LoginPage.png" width="760">
 </p>
 
-### Register Page
+### 📝 Register Page
 <p align="center">
   <img src="images/Register.png" width="760">
 </p>
@@ -52,22 +52,15 @@ EventZen is a **full-stack event management platform** with role-based access co
 - **Event Counter** — Total events count shown in header
 - **Animated Cards** — Hover animations with card lift effect
 
-### Event Statuses
-| Status | Color | Meaning |
-|--------|-------|---------|
-| Upcoming | Blue | Event scheduled for future |
-| Ongoing | Green | Event currently in progress |
-| Completed | Gray | Event has finished |
-
 ### Tech Used
 - Node.js, Express.js, MongoDB, Mongoose
 
-### Event Page(Admin)
+### 🎉 Event Page(Admin)
 <p align="center">
   <img src="images/EventAdminPage.png" width="700">
 </p>
 
-### Event Page(Customer)
+### 🎉 Event Page(Customer)
 <p align="center">
   <img src="images/EventCustomerPage.png" width="700">
 </p>
