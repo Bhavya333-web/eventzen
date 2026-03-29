@@ -28,8 +28,8 @@ EventZen is a **full-stack event management platform** with role-based access co
 - Node.js, Express.js, MySQL, JWT, Bcrypt
 
 <p align="center">
-  <img src="images/LoginPage.png" width="300">
-  <img src="images/Register.png" width="300">
+  <img src="images/LoginPage.png" width="500">
+  <img src="images/Register.png" width="550">
 </p>
 
 
