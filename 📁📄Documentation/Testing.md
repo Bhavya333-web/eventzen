@@ -245,9 +245,42 @@ Body: {
   <img src="images/Create_Budget.png" width="600">
 </p>
 
+---
+
+### Test Case 11: Wrong Password (Negative Test)
+
+**Request:**
+
+```
+POST http://localhost:5001/api/auth/login
+
+Body: {
+  
+  "email": "admin@eventzen.com",
+  "password": "wrongpassword"
+}
+
+```
+
+<p align="center">
+  <img src="images/Wrong_Password.png" width="600">
+</p>
 
 
+---
 
+### Test Case 12: No Token (Negative Test)
+
+**Request:**
+
+```
+GET http://localhost:5001/api/auth/users
+
+```
+
+<p align="center">
+  <img src="images/Negative_Test.png" width="600">
+</p>
 
 
 ## 🖥️ Frontend UI Testing
