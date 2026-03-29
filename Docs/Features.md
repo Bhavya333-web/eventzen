@@ -57,12 +57,12 @@ EventZen is a **full-stack event management platform** with role-based access co
 
 ### 🎉 Event Page(Admin)
 <p align="center">
-  <img src="images/EventAdminPage.png" width="700">
+  <img src="images/EventAdminPage.png" width="760">
 </p>
 
 ### 🎉 Event Page(Customer)
 <p align="center">
-  <img src="images/EventCustomerPage.png" width="700">
+  <img src="images/EventCustomerPage.png" width="760">
 </p>
 
 ---
@@ -83,9 +83,14 @@ EventZen is a **full-stack event management platform** with role-based access co
 ### Tech Used
 - .NET 8, ASP.NET Core Web API, MongoDB
 
+### 👥 Attendee Management Page
+<p align="center">
+  <img src="images/AttendeePage.png" width="760">
+</p>
+
 ---
 
-## 💰 Module 4: Budget Tracking
+## 💰 Module 4: Budget Tracking 
 
 ### Features
 - **Set Total Budget** — Define maximum budget for each event
@@ -100,6 +105,12 @@ EventZen is a **full-stack event management platform** with role-based access co
 
 ### Tech Used
 - Spring Boot 3.x, Java 21, MongoDB, Spring Data
+
+### 💰  Budget Tracking Page
+<p align="center">
+  <img src="images/BudgetTracking.png" width="760">
+</p>
+
 
 ---
 
@@ -120,6 +131,12 @@ EventZen is a **full-stack event management platform** with role-based access co
 ### Tech Used
 - Node.js, Express.js, MongoDB, Mongoose
 
+### 🏪 Vendor Management Page
+<p align="center">
+  <img src="images/VendorManagement.png" width="760">
+</p>
+
+
 ---
 
 ## 👑 Admin Portal Features
@@ -134,9 +151,15 @@ EventZen is a **full-stack event management platform** with role-based access co
 - **Recent Events Table** — Last 5 events with status badges
 - **Responsive Design** — Works on different screen sizes
 
+### 👑  Admin Portal
+<p align="center">
+  <img src="images/AdminDashboard.png" width="760">
+</p>
+
+
 ---
 
-## 👤 Customer Portal Features
+## 🧑‍💻 Customer Portal Features
 
 - **Top Navbar** — Horizontal navigation with Home, Bookings, Profile links
 - **Hero Section** — Welcome banner with search bar
@@ -146,6 +169,18 @@ EventZen is a **full-stack event management platform** with role-based access co
 - **My Bookings** — View all events registered for with confirmation status
 - **Profile Page** — Account details with gradient avatar
 - **Success Messages** — Animated confirmation on successful booking
+
+### 📖 My Bookings Page
+<p align="center">
+  <img src="images/Bookings_Customer.png" width="760">
+</p>
+
+### 👤 Profile Page
+<p align="center">
+  <img src="images/CustomerProfile.png" width="760">
+</p>
+
+
 
 ---
 
