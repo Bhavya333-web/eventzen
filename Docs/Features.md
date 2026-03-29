@@ -166,7 +166,7 @@ EventZen is a **full-stack event management platform** with role-based access co
 - **7 Docker Containers** — Each service fully containerized
 - **docker-compose** — Single command to start entire application
 ```
-bash docker-compose up --build
+docker-compose up --build
 ```
 
 - **Health Checks** — MySQL and MongoDB health monitoring
