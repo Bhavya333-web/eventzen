@@ -4,9 +4,6 @@
 
 ---
 
-## What are Wireframes?
-
-Wireframes are **skeletal blueprints** of the application's UI layout. They show the placement of elements (buttons, forms, tables, navigation) without the actual styling/colors. They are created **before** development to plan the interface.
 
 ---
 
@@ -234,20 +231,5 @@ Wireframes are **skeletal blueprints** of the application's UI layout. They show
 └─────────────────────────────────────────────────────────┘
 ```
 
----
-
-## Note on Wireframes vs Screenshots
-
-| Wireframe | Screenshot |
-|-----------|-----------|
-| Shows layout structure | Shows actual app |
-| Black & white / grayscale | Full color with styling |
-| Created BEFORE development | Taken AFTER development |
-| Planning tool | Evidence of completion |
-| For submission planning | For submission proof |
-
-**Both are required in your submission document!**
-
----
 
 *EventZen Wireframes | Bhavya Mittal | Deloitte Training 2025-26*
