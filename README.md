@@ -120,6 +120,21 @@ docker-compose up --build
 
 > **First time setup:** After Docker starts, go to `/register` and create an Admin account using the Admin Secret Code.
 
+---
+
+## Default Credentials
+
+### Admin Login
+> Register first at `/register` with:
+- Account Type: **Admin**
+- Admin Secret Code: **`EVENTZEN@ADMIN2025`**
+
+### Regular User
+> Register at `/register` with:
+- Account Type: **Regular User**
+- No secret code required
+
+
 ### Stop the application
 ```bash
 docker-compose down
@@ -178,19 +193,6 @@ http://localhost:3000
 | MySQL | 3306 | MySQL 8.0 |
 | MongoDB | 27017 | MongoDB 6.0 |
 
----
-
-## Default Credentials
-
-### Admin Login
-> Register first at `/register` with:
-- Account Type: **Admin**
-- Admin Secret Code: **`EVENTZEN@ADMIN2025`**
-
-### Regular User
-> Register at `/register` with:
-- Account Type: **Regular User**
-- No secret code required
 
 ---
 
