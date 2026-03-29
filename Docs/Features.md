@@ -62,6 +62,16 @@ EventZen is a **full-stack event management platform** with role-based access co
 ### Tech Used
 - Node.js, Express.js, MongoDB, Mongoose
 
+### Event Page(Admin)
+<p align="center">
+  <img src="images/EventAdminPage.png" width="700">
+</p>
+
+### Event Page(Customer)
+<p align="center">
+  <img src="images/EventCustomerPage.png" width="700">
+</p>
+
 ---
 
 ## 👥 Module 3: Attendee Management
