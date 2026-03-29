@@ -282,8 +282,7 @@ Output shows 7 containers:
   <img src="images/DockerPs.png" width="700" Height = "700">
 </p>
 
-```
 
----
+
 
 *EventZen Testing Documentation | Bhavya Mittal | Deloitte Training 2025-26*
