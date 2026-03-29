@@ -96,7 +96,7 @@ POST http://localhost:5002/api/events
 Headers: Authorization: Bearer <token>
 Body: {
   "title": "Tech Conference 2025",
-  "description": "Annual tech event",
+  "description": "Annual technology Conference",
   "date": "2025-06-15",
   "venue": "Mumbai Convention Center",
   "capacity": 500,
@@ -282,7 +282,7 @@ Output shows 7 containers:
   <img src="images/DockerPs.png" width="600">
 </p>
 
-```
+
 
 ---
 
