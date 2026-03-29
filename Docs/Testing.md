@@ -277,12 +277,12 @@ docker ps
 ```
 
 Output shows 7 containers:
-```
+
 <p align="center">
   <img src="images/DockerPs.png" width="600">
 </p>
 
-
+```
 
 ---
 
